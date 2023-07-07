@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as dataRaw from '../../../../data/tracks.json' //Todo en trakcs.json lo va a asignar al valor de data
+import { TrackModel } from '@core/models/tracks.model';
 
 @Component({
   selector: 'app-tracks-page',
@@ -6,15 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./tracks-page.component.css']
 })
 export class TracksPageComponent {
-  mockTracksList = [
-    {
-      name: 'BEBE (Oficial)'
-    },
-    {
-      name: 'BEBE (Oficial)'
-    },
-    {
-      name: 'BEBE (Oficial)'
-    }
+  mockTracksList: Array<TrackModel> = [
   ]
+
+  ngOnInit(): void {
+    const {data}: any = (dataRaw as any).default
+    this.mockTracksList = data;
+  }
 }
