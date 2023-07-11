@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 
 @NgModule({ 
   declarations: [//declaraciones, directivas, pipes...
-  AppComponent  
+  AppComponent,
+  
 ],
   imports: [ //Solo se importan otros modulos
     BrowserModule,
