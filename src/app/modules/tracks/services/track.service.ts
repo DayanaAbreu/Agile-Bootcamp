@@ -52,6 +52,7 @@ export class TrackService {
         // map((dataRevertida) => { //TODO aplicar un filter comun de array
         //   return dataRevertida.filter((track: TrackModel) => track._id !== 1)
         // })
+        tap(data => console.log('OKOKOK', data)),
         catchError((err) => {
           const { status, statusText } = err;
           return of([])
