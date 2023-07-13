@@ -1,16 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public age = 0
-  private name = ''
+  private readonly URL = environment.api
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
-  constructor() { }
-
-  sendCredentials(email:string, password: string): void {
-    console.log(' Ok Ok', email, password);
+  sendCredentials(email:string, password: string): Observable<any> {
+    const body = {
+      email,
+      password
+    }
+    return this.http.post(`${this.URL}/auth/login`, body)
+    .pipe(
+      tap((responseOk: any) => {
+        const { tokenSession, data } = responseOk
+        this.cookie.set('token', tokenSession, 4, '/')
+      })
+    )
   }
 }
