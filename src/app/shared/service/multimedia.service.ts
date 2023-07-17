@@ -8,4 +8,8 @@ export class MultimediaService {
   callback: EventEmitter<any> = new EventEmitter<any>;
 
   constructor() { }
+
+  private listenAllEvents(): void {
+
+  }
 }
