@@ -13,6 +13,7 @@ export class SideBarComponent {
     //Así solo va a dar error en main Menu, hay que inicializarlo poniendo:
     = {defaultOptions: [], accessLink: []}
 
+    adminOptions: Array<any> = []
     customOptions: Array<any> = []
 
     constructor(private router: Router) { }
@@ -33,7 +34,7 @@ export class SideBarComponent {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
         router: ['/', 'favorites'],
-      }
+      },
     ]
     this.mainMenu.accessLink = [
       {
@@ -43,6 +44,15 @@ export class SideBarComponent {
       {
         name: 'Canciones que te gustan',
         icon: 'uil-heart-medical'
+      }
+      
+    ]
+
+    this.adminOptions = [
+      {
+        name: 'Administración',
+        icon: 'uil uil-chart',
+        router: ['/', 'admin'],
       }
     ]
 
