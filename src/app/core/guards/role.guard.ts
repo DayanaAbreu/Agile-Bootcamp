@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root',
 })
+  //Con guardianes como funciones en lugar de como clases
+
 
 export class PermissionsService {
   constructor(private cookieService: CookieService, public router: Router) {}
