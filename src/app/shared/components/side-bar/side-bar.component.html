@@ -10,7 +10,7 @@
     </ul>
     <!-- <div class="side-bar__separator line-separator"> -->
     <div class="side-bar__separator line-separator"></div>
-        <ul class="side-bar__list list-three">
+        <ul *ngIf="role === 'admin'" class="side-bar__list list-three">
             <li [routerLink]="item.router" *ngFor="let item of adminOptions">
                 <div class="list-wrapper-item">
                     <i class="uil {{item.icon}}"></i>

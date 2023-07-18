@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthModule } from '@modules/auth/auth.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-side-bar',
@@ -17,7 +18,9 @@ export class SideBarComponent {
     adminOptions: Array<any> = []
     customOptions: Array<any> = []
 
-    constructor(private router: Router) { }
+    constructor(private cookieService: CookieService, private router: Router) { }
+
+    role: string = this.cookieService.get('role')
 
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
