@@ -6,10 +6,10 @@ const routes: Routes = [
   {path: 'login',
   component: AuthPageComponent 
   },
-  {
+  /*{
     path: '**', //Para decirle en referencia a cualquier ruta de este auth
     redirectTo: '/auth/login'
-  }
+  }*/
   
 ];
 

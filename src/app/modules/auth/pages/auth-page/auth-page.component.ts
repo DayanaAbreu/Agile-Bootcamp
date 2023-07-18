@@ -41,6 +41,7 @@ export class AuthPageComponent implements OnInit {
         console.log('Session iniciada correcta', responseOk);
         const { tokenSession, data } = responseOk
         this.cookie.set('token', tokenSession, 4, '/') //TODO:📌📌📌📌
+        this.cookie.set('role', data.role, 4, '/')
         this.router.navigate(['/', 'tracks'])
       },
         err => {//TODO error 400>=

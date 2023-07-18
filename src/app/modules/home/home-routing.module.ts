@@ -17,13 +17,8 @@ const routes: Routes = [
     loadChildren:() => import('@modules/history/history.module').then(m => m.HistoryModule)
   },
   {
-    path: 'admin',
-    loadChildren:() => import('@modules/admin/admin.module').then(m => m.AdminModule)
-  },
-  {
     path: '**',
     redirectTo: '/tracks'
-
   }
   
 ];

@@ -10,6 +10,7 @@ import { PlayListBodyComponent } from './components/play-list-body/play-list-bod
 import { RouterModule } from '@angular/router';
 import { OrderListPipe } from './pipe/order-list.pipe';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
+import { AuthModule } from '@modules/auth/auth.module';
 
 
 

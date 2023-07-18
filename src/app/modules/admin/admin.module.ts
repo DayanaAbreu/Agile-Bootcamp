@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AuthModule } from '@modules/auth/auth.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ]
 })
 export class AdminModule { }
