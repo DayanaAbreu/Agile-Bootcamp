@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { OrderListPipe } from './pipe/order-list.pipe';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
 import { AuthModule } from '@modules/auth/auth.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -29,7 +30,7 @@ import { AuthModule } from '@modules/auth/auth.module';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     SideBarComponent,
