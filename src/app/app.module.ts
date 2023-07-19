@@ -5,15 +5,17 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { InjectTokenInterceptor } from '@core/interceptors/inject-token.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({ 
-  declarations: [//declaraciones, directivas, pipes...
-  
+  declarations: [
+    AppComponent//declaraciones, directivas, pipes...
 ],
   imports: [ //Solo se importan otros modulos
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [
     CookieService,
