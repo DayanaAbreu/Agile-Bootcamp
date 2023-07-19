@@ -11,12 +11,6 @@ const routes: Routes = [
     loadChildren: () =>import(`./modules/auth/auth.module`).then(m=>m.AuthModule)
   }, 
   {
-    path: 'admin',
-    component: AdminPageComponent,
-    loadChildren: () =>import(`./modules/admin/admin.module`).then(m=>m.AdminModule),
-    canActivate: [roleGuard]
-  },
-  {
     path: '', //TODO: localhost:4200/
     component: HomePageComponent, //Llamar aqui al componente en lugar de dentro de Home, hace que se redimensione. Luego en home-page component agregamos router-outlet
     loadChildren: () =>import(`./modules/home/home.module`).then(m=>m.HomeModule),

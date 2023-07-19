@@ -8,7 +8,6 @@ import { InjectTokenInterceptor } from '@core/interceptors/inject-token.intercep
 
 @NgModule({ 
   declarations: [//declaraciones, directivas, pipes...
-  AppComponent,
   
 ],
   imports: [ //Solo se importan otros modulos
