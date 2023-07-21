@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { TrackModel } from './../../core/models/tracks.model';
 import { EventEmitter, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Observer, Subject, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,6 +11,8 @@ import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 export class MultimediaService {
   callback: EventEmitter<any> = new EventEmitter<any>()
 
+  private readonly URL = environment.api
+
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
   public audio!: HTMLAudioElement //TODO <audio>
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
@@ -16,7 +20,7 @@ export class MultimediaService {
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
-  constructor() {
+  constructor(private http: HttpClient) {
 
     this.audio = new Audio()
 
@@ -112,6 +116,16 @@ export class MultimediaService {
     const percentageToSecond = (percentage * duration) / 100
     this.audio.currentTime = percentageToSecond
 
+  }
+
+  //Funciones de lista
+  getAllTracks$(): Observable<any> {
+    return this.http.get(`${this.URL}/tracks`)
+      .pipe(
+        map(({ data }: any) => {
+          return data
+        })
+      )
   }
 
 }

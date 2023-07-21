@@ -1,1 +1,23 @@
-<p>new-track works!</p>
+<form (ngSubmit)="sendNewTrack()" [formGroup]="formAdmin" class="admin-form">
+    <div class="input-container">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input #trackName formControlName="name" type="text" placeholder="Nombre de Track" class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="album">Albúm</label>
+            <input formControlName="album" type="text" placeholder="Albúm" class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="cover">Cover</label>
+            <input formControlName="cover" type="text" placeholder="Link de cubierta del Albúm" class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="artist">Artista</label>
+            <input formControlName="artist" type="text" placeholder="Artista" class="form-input">
+        </div>
+    </div>
+    <div class="form-action">
+        <button [disabled]="formAdmin.invalid" class="social-btn">Añadir Track</button> <!--Al hacer click aqui la variable de mostrar este form debe desaparecer también-->
+    </div>
+</form>

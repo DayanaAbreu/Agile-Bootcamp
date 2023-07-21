@@ -20,9 +20,9 @@ import { RouterModule } from '@angular/router';
   providers: [
     CookieService,
     {
-      provide:HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
       useClass:InjectTokenInterceptor,
-      multi: true
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]
