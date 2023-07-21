@@ -3,7 +3,8 @@
         <li (click)="changeSort('name')">Nombre ❤</li>
         <li (click)="changeSort('album')">Albúm 🆗</li>
         <li>Artista 🍌😁</li>
-        <li><i class="uil uil-clock-eight"></i></li>
+        <li>Edit</li>
+        <li>Delete</li>
     </ul>
     <ul class="play-list-rows" *ngFor="let track of tracks | orderList:optionSort.property:optionSort.order">
         <li class="track-name">
@@ -16,7 +17,10 @@
             {{track.artist}}
         </li>
         <li class="track-name-opacity">
-            {{track.artist}}
+            <i class="uil uil-edit edit-icon"></i>
+        </li>
+        <li class="track-name-opacity">
+            <i class="uil uil-trash-alt trash-icon"></i>
         </li>
 
     </ul>

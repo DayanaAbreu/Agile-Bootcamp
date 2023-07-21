@@ -41,10 +41,8 @@ export class NewTrackComponent implements OnInit {
       .subscribe(responseOk => {
         console.log('Track agregado correctamente')
         this.router.navigate(['/', 'admin'])
-        const { uId, data } = responseOk
-        this.cookie.set('id', uId)
-        this.cookie.set('name', data.name, 4, '/') //TODO:📌📌📌📌
-        this.router.navigate(['/', 'tracks'])
+        const { data } = responseOk
+        this.cookie.set('name', data.name) //TODO:📌📌📌📌
       })
   }
 

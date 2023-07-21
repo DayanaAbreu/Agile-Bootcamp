@@ -8,6 +8,7 @@ import { AuthModule } from '@modules/auth/auth.module';
 import { SharedModule } from "../../shared/shared.module";
 import { NewTrackComponent } from './components/new-track/new-track.component';
 import { UpdateTrackComponent } from './components/update-track/update-track.component';
+import { GetTracksComponent } from './components/get-tracks/get-tracks.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { UpdateTrackComponent } from './components/update-track/update-track.com
         AdminPageComponent,
         NewTrackComponent,
         UpdateTrackComponent,
+        GetTracksComponent,
     ],
     imports: [
         CommonModule,

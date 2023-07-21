@@ -40,5 +40,15 @@ export class AdminService {
     }
     return this.http.post(`${this.URL}/tracks/add`, body)
   }
+
+  updateTrack(id: string, name: string): Observable<any> {
+    const body = {
+      id,
+      name
+    }
+    return this.http.put(`${this.URL}/tracks/edit/${id}`, body)
+  }
+
+
   
 }
