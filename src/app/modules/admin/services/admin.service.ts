@@ -55,6 +55,10 @@ export class AdminService {
     }
     return this.http.put(`${this.URL}/tracks/edit/${id}`, body)
   }
+
+  deleteTrack(id: string): Observable<any> {
+    return this.http.delete(`${this.URL}/tracks/delete/${id}`)
+  }
   
 
   /*public setId(track: TrackModel): void {

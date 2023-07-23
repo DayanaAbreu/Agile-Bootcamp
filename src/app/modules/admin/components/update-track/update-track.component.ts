@@ -34,10 +34,8 @@ export class UpdateTrackComponent implements OnInit {
     const id = this.cookie.get('idTrack')
     this.adminService.updateTrack(id, name)
       .subscribe(responseOk => {
-        console.log('Track actualizado correctamente')
+        console.log('Track actualizado correctamente', responseOk)
         this.router.navigate(['/', 'admin'])
-        const { data } = responseOk
-        this.cookie.set('name', data.name)
       })
   }
 }

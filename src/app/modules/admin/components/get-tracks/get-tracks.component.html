@@ -20,7 +20,7 @@
             <i (click)="getTrackId2(track.uid, track.name)" class="uil uil-edit edit-icon"></i>
         </li>
         <li class="track-name-opacity">
-            <i class="uil uil-trash-alt trash-icon"></i>
+            <i (click)="getTrackId2(track.uid, track.name)" (click)="sendTrackDelete()" class="uil uil-trash-alt trash-icon"></i>
         </li>
 
     </ul>

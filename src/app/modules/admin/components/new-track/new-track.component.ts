@@ -38,7 +38,7 @@ export class NewTrackComponent implements OnInit {
     const { name, album, cover, artist } = this.formAdmin.value
     this.adminService.sendTrack(name, album, cover, artist)
       .subscribe(responseOk => {
-        console.log('Track agregado correctamente')
+        console.log('Track agregado correctamente', responseOk)
         this.router.navigate(['/', 'admin'])
       })
   }
