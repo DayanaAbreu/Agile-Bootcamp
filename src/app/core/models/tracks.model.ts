@@ -5,6 +5,6 @@ export interface TrackModel { //Modelo de referencia que debe tener una canción
     album: string;
     cover: string;
     url: string;
-    _id: string | number;
+    uid: string | number;
     artist?: ArtistModel;
 }

@@ -1,8 +1,9 @@
-<form class="admin-form">
+<form (ngSubmit)="sendUpdatedTrack()" [formGroup]="formAdmin" class="admin-form">
     <div class="input-container">
+        <div>Editando: {{trackName}}</div>
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input formControlName="name" type="text" placeholder="Nombre de Track" class="form-input">
+            <input formControlName="name" type="text" placeholder="Inserte nuevo nombre" class="form-input">
         </div>
     </div>
     <div class="form-action">

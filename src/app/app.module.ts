@@ -6,6 +6,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { InjectTokenInterceptor } from '@core/interceptors/inject-token.interceptor';
 import { RouterModule } from '@angular/router';
+import { KeyValuePipe } from '@angular/common';
 
 @NgModule({ 
   declarations: [
@@ -23,7 +24,9 @@ import { RouterModule } from '@angular/router';
       provide: HTTP_INTERCEPTORS,
       useClass:InjectTokenInterceptor,
       multi: true,
-    }
+    },
+    KeyValuePipe
+
   ],
   bootstrap: [AppComponent]
 })

@@ -29,7 +29,6 @@ export class NewTrackComponent implements OnInit {
           Validators.required,
         ]),
         artist: new UntypedFormControl('', [
-          Validators.required,
         ])
       }
     )
@@ -41,8 +40,6 @@ export class NewTrackComponent implements OnInit {
       .subscribe(responseOk => {
         console.log('Track agregado correctamente')
         this.router.navigate(['/', 'admin'])
-        const { data } = responseOk
-        this.cookie.set('name', data.name) //TODO:📌📌📌📌
       })
   }
 
