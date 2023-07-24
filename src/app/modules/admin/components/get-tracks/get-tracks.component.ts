@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GetTracksComponent {
   private readonly URL = environment.api
+  
   @Input() tracks: Array<TrackModel> = [] //Es lo mismo que tracks: TrackModel[] = []
   optionSort: { property: string | null, order: string } = { property: null, order: 'asc'}
 
@@ -24,37 +25,33 @@ export class GetTracksComponent {
   constructor(private multimediaService: MultimediaService, 
     private adminService: AdminService,
     private cookie: CookieService,
-    private httpClient: HttpClient, 
     private router: Router) {}
 
-    
-  trackId = this.cookie.get('idTrack')
+    ngOnInit():void {
+      this.loadDataAll()
+      
+      }
 
-  ngOnInit():void {
-    this.loadDataAll()
-    
-  }
-
-  async loadDataAll(): Promise<any> {
-    this.tracks = await this.multimediaService.getAllTracks$().toPromise()
-  }
-
-  changeSort(property: string): void {
-    const { order } = this.optionSort
-    this.optionSort = {
-      property,
-      order: order === 'asc' ? 'desc' : 'asc'
+    async loadDataAll(): Promise<any> {
+      this.tracks = await this.multimediaService.getAllTracks$().toPromise()
     }
-    console.log(this.optionSort);
-  }
 
-  getTrackId2(id: number | string, name: string ): void {
-        this.cookie.set('idTrack', id.toString(), 4, '/')
-        this.cookie.set('trackName', name, 4, '/')
-        const cookie1= this.cookie.get('idTrack')
-        const cookie2= this.cookie.get('trackName')
-        console.log(cookie1, cookie2)
+    changeSort(property: string): void {
+      const { order } = this.optionSort
+      this.optionSort = {
+        property,
+        order: order === 'asc' ? 'desc' : 'asc'
+      }
+      console.log(this.optionSort);
     }
+
+    getTrackId2(id: number | string, name: string ): void {
+          this.cookie.set('idTrack', id.toString(), 4, '/')
+          this.cookie.set('trackName', name, 4, '/')
+          const cookie1= this.cookie.get('idTrack')
+          const cookie2= this.cookie.get('trackName')
+          console.log(cookie1, cookie2)
+      }
 
     sendTrackDelete(): void {
       const id = this.cookie.get('idTrack')

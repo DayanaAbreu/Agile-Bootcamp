@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
@@ -13,11 +13,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class UpdateTrackComponent implements OnInit {
 
   formAdmin: UntypedFormGroup = new UntypedFormGroup({});
-  track: TrackModel = { uid: 0, name: '', album: '', url: '', cover: '' };
 
   constructor(public adminService: AdminService, public cookie: CookieService, private router: Router) {}
-
-  trackName: string = this.cookie.get('trackName')
 
   ngOnInit(): void {
     this.formAdmin = new UntypedFormGroup(

@@ -12,7 +12,7 @@ export class AdminPageComponent {
 
   botonTrack= false
 
-  constructor(private adminService: AdminService, private router: Router) {}
+  constructor() {}
 
   pressNewTrack() {
     this.botonTrack= true

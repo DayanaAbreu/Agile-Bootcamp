@@ -13,22 +13,9 @@ export class AdminService {
 
   private readonly URL = environment.api
 
-  public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
-  public trackId!: string | number;
-  track: TrackModel = { uid: 0, name: '', album: '', url: '', cover: '' };
-
   constructor(private http: HttpClient, private cookie: CookieService) {
-      /*this.trackInfo$.subscribe(responseOK => {
-        if(responseOK) {
-          this.setId(responseOK)
-        }
-      })*/
-   }
 
-  /*Forma con un solo elemento. Pero necesito trabajar con formulario reactivo
-    createTrack$(track: TrackModel): Observable<TrackModel> {
-    return this.http.post<TrackModel>(`${this.URL}/tracks/add`, track, this.httpOptions)
-  }*/
+   }
 
   getAllTracks(): Observable<any> {
     return this.http.get(`${this.URL}/tracks`)
@@ -58,25 +45,6 @@ export class AdminService {
 
   deleteTrack(id: string): Observable<any> {
     return this.http.delete(`${this.URL}/tracks/delete/${id}`)
-  }
-  
-
-  /*public setId(track: TrackModel): void {
-    console.log('El Id es:', track._id)
-    this.trackId = track._id
-  }*/ 
-
-  /*getTrackById(tracks: TrackModel[], id: number | string): TrackModel | undefined {
-    //this.adminService.trackInfo$.next(track)
-    const listId = tracks.find(a => a._id == id)
-    console.log(listId)
-    return listId
-  }*/
-
-  getTrack(trackId: number | string ): Observable<any> {
-    return this.http.get(`${this.URL}/tracks`)
-    .pipe(map(val => { console.log(val)}))
-    
   }
 
 }

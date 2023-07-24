@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
 import { CookieService } from 'ngx-cookie-service';
 
