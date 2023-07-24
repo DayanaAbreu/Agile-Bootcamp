@@ -2,6 +2,7 @@ import { TrackService } from '@modules/tracks/services/track.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
 import { Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-tracks-page',
@@ -14,11 +15,12 @@ export class TracksPageComponent implements OnInit, OnDestroy {
   tracksRandom: Array<TrackModel> = []
   listObservers$: Array<Subscription> = []
 
-  constructor(private trackService: TrackService) { }
+  constructor(private trackService: TrackService, public cookie: CookieService) { }
 
   ngOnInit(): void {
     this.loadDataAll() //TODO 📌📌
     this.loadDataRandom() //TODO 📌📌
+    this.cookie.delete('idTrack')
   }
 
   async loadDataAll(): Promise<any> {

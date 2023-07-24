@@ -35,7 +35,7 @@ export class UpdateTrackComponent implements OnInit {
     this.adminService.updateTrack(id, name)
       .subscribe(responseOk => {
         console.log('Track actualizado correctamente', responseOk)
-        this.router.navigate(['/', 'admin'])
+        this.router.navigate(['/', 'tracks'])
       })
   }
 }

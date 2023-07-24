@@ -1,8 +1,10 @@
 <div class="admin-page">
     <div class="zona-form">
         <!--ng if (variable que inventaré y tendrá valor al dar click en botón) = true, mostrar formulario-->
-        <app-new-track></app-new-track>
-        <app-update-track></app-update-track>
+        <button (click)="pressNewTrack()" class="social-btn">Nuevo Track</button>
+        <div *ngIf="botonTrack === true ">
+            <app-new-track></app-new-track>
+        </div>
     </div>
     <app-get-tracks></app-get-tracks>
 </div>

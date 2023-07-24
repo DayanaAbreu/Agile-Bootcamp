@@ -10,7 +10,13 @@ import { AdminService } from '@modules/admin/services/admin.service';
 })
 export class AdminPageComponent {
 
+  botonTrack= false
+
   constructor(private adminService: AdminService, private router: Router) {}
 
+  pressNewTrack() {
+    this.botonTrack= true
+  }
 
+ 
 }

@@ -1,12 +1,10 @@
 <form (ngSubmit)="sendUpdatedTrack()" [formGroup]="formAdmin" class="admin-form">
     <div class="input-container">
-        <div>Editando: {{trackName}}</div>
         <div class="form-group">
-            <label for="name">Nombre</label>
             <input #trackName formControlName="name" type="text" placeholder="Inserte nuevo nombre" class="form-input">
         </div>
     </div>
     <div class="form-action">
-        <button class="social-btn">Editar Track</button>
+        <button class="uil uil-check-square"></button>
     </div>
 </form>

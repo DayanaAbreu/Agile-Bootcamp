@@ -6,9 +6,16 @@
         <li>Edit</li>
         <li>Delete</li>
     </ul>
-    <ul class="play-list-rows" *ngFor="let track of tracks | orderList:optionSort.property:optionSort.order">
+    <ul class="play-list-rows" *ngFor="let track of tracks | orderList:optionSort.property:optionSort.order; let indice = index">
         <li class="track-name">
-            <ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>
+            <!--<ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>-->
+            <div class="cover-section">
+                <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+                <div class="cover-info">
+                    <div *ngIf="numeroTrack !== indice" class="name-track">{{track.name}}</div>
+                    <app-update-track *ngIf="numeroTrack === indice"></app-update-track>
+                </div>
+            </div>
         </li>
         <li class="track-name-opacity">
             {{track.album}}
@@ -17,7 +24,7 @@
             {{track.artist}}
         </li>
         <li class="track-name-opacity">
-            <i (click)="getTrackId2(track.uid, track.name)" class="uil uil-edit edit-icon"></i>
+            <i (click)="getTrackId2(track.uid, track.name)" (click)="setIndice(indice)" class="uil uil-edit edit-icon"></i>
         </li>
         <li class="track-name-opacity">
             <i (click)="getTrackId2(track.uid, track.name)" (click)="sendTrackDelete()" class="uil uil-trash-alt trash-icon"></i>

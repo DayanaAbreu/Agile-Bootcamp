@@ -1,0 +1,11 @@
+.social-btn {
+    padding: .5rem 1rem;
+    margin: 2rem;
+    width: 20%;
+    font-size: var(--font-size-1);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--shadow-1);
+    border: solid 1px var(--color-4);
+    background-color: var(--color-1);
+    font-weight: 600;
+}

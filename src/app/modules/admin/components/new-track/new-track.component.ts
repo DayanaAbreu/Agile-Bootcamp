@@ -39,7 +39,7 @@ export class NewTrackComponent implements OnInit {
     this.adminService.sendTrack(name, album, cover, artist)
       .subscribe(responseOk => {
         console.log('Track agregado correctamente', responseOk)
-        this.router.navigate(['/', 'admin'])
+        this.router.navigate(['/', 'tracks'])
       })
   }
 

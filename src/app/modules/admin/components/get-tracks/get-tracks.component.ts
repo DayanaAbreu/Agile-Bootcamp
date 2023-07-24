@@ -19,12 +19,17 @@ export class GetTracksComponent {
   @Input() tracks: Array<TrackModel> = [] //Es lo mismo que tracks: TrackModel[] = []
   optionSort: { property: string | null, order: string } = { property: null, order: 'asc'}
 
+  numeroTrack: number | null = null
+
   constructor(private multimediaService: MultimediaService, 
     private adminService: AdminService,
     private cookie: CookieService,
     private httpClient: HttpClient, 
     private router: Router) {}
-  
+
+    
+  trackId = this.cookie.get('idTrack')
+
   ngOnInit():void {
     this.loadDataAll()
     
@@ -56,12 +61,14 @@ export class GetTracksComponent {
       this.adminService.deleteTrack(id)
         .subscribe(responseOk => {
           console.log('Track eliminado', responseOk)
-          this.router.navigate(['/', 'admin'])
+          this.router.navigate(['/', 'tracks'])
         })
         
     }
 
-    //Si esto no funcionó, hacer una función sola que haga las dos cosas al hacer click. Y con update tal vez uno que cree una constnte
+    setIndice(indice: number | null) {
+      this.numeroTrack = indice
+    }
 
   ngOnDestroy(): void {
 
