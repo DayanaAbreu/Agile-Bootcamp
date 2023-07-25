@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 import { GetTracksComponent } from './get-tracks.component';
+import { OrderListPipe } from '@shared/pipe/order-list.pipe';
 
 describe('GetTracksComponent', () => {
   let component: GetTracksComponent;
@@ -8,7 +10,9 @@ describe('GetTracksComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GetTracksComponent]
+      imports: [HttpClientTestingModule],
+      declarations: [GetTracksComponent,
+      OrderListPipe]
     });
     fixture = TestBed.createComponent(GetTracksComponent);
     component = fixture.componentInstance;

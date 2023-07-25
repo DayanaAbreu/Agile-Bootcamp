@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+
 import { MediaPlayerComponent } from './media-player.component';
 
 describe('MediaPlayerComponent', () => {
@@ -8,6 +10,7 @@ describe('MediaPlayerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [MediaPlayerComponent]
     });
     fixture = TestBed.createComponent(MediaPlayerComponent);

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TracksPageComponent } from './tracks-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SectionGenericComponent } from '@shared/components/section-generic/section-generic.component';
 
 describe('TracksPageComponent', () => {
   let component: TracksPageComponent;
@@ -8,7 +10,9 @@ describe('TracksPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TracksPageComponent]
+      imports: [HttpClientTestingModule],
+      declarations: [TracksPageComponent,
+      SectionGenericComponent]
     });
     fixture = TestBed.createComponent(TracksPageComponent);
     component = fixture.componentInstance;
