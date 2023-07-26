@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthPageComponent } from './auth-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('AuthPageComponent', () => {
   let component: AuthPageComponent;
@@ -13,7 +14,9 @@ describe('AuthPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule,
+        FormsModule
       ],
       declarations: [AuthPageComponent]
     })
