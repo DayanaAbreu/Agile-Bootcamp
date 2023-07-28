@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
+import { TrackService } from '@modules/tracks/services/track.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -13,8 +14,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class UpdateTrackComponent implements OnInit {
 
   formAdmin: UntypedFormGroup = new UntypedFormGroup({});
+  trackNumber: null | undefined | number;
+  @Output() trackNumberEvent: EventEmitter<number | null> = new EventEmitter();
 
-  constructor(public adminService: AdminService, public cookie: CookieService, private router: Router) {}
+  
+  constructor(public adminService: AdminService, public cookie: CookieService, private router: Router,
+    public tracksService: TrackService) {}
 
   ngOnInit(): void {
     this.formAdmin = new UntypedFormGroup(
@@ -26,13 +31,16 @@ export class UpdateTrackComponent implements OnInit {
     )
   }
 
-  sendUpdatedTrack(): void {
+  sendUpdatedTrack(term: null): void {
     const { name } = this.formAdmin.value
     const id = this.cookie.get('idTrack')
+    this.trackNumber = null
+    this.trackNumberEvent.emit(term)
     this.adminService.updateTrack(id, name)
       .subscribe(responseOk => {
         console.log('Track actualizado correctamente', responseOk)
-        this.router.navigate(['/', 'tracks'])
+        this.formAdmin.reset()
       })
   }
+
 }

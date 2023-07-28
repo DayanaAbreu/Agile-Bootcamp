@@ -1,6 +1,6 @@
 import { KeyValuePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
@@ -12,9 +12,9 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-get-tracks',
   templateUrl: './get-tracks.component.html',
-  styleUrls: ['./get-tracks.component.css']
+  styleUrls: ['./get-tracks.component.css'],
 })
-export class GetTracksComponent {
+export class GetTracksComponent implements OnInit, OnChanges{
   private readonly URL = environment.api
   
   @Input() tracks: Array<TrackModel> = [] //Es lo mismo que tracks: TrackModel[] = []
@@ -26,6 +26,10 @@ export class GetTracksComponent {
     private adminService: AdminService,
     private cookie: CookieService,
     private router: Router) {}
+
+    ngOnChanges(changes: SimpleChanges): void {
+ 
+    }
 
     ngOnInit():void {
       this.loadDataAll()
@@ -58,7 +62,7 @@ export class GetTracksComponent {
       this.adminService.deleteTrack(id)
         .subscribe(responseOk => {
           console.log('Track eliminado', responseOk)
-          this.router.navigate(['/', 'tracks'])
+          this.loadDataAll()
         })
         
     }
@@ -66,6 +70,11 @@ export class GetTracksComponent {
     setIndice(indice: number | null) {
       this.numeroTrack = indice
     }
+
+    resetIndice(indice: number | null): void {
+      this.numeroTrack= indice
+    }
+    
 
   ngOnDestroy(): void {
 
