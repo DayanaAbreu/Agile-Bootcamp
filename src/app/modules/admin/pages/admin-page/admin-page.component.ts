@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
 
 @Component({
@@ -10,12 +11,21 @@ import { AdminService } from '@modules/admin/services/admin.service';
 })
 export class AdminPageComponent {
 
+  newTrackElement: any
+  botonAgregado = false
   botonTrack= false
 
   constructor() {}
 
   pressNewTrack() {
     this.botonTrack= true
+  }
+
+  getNew(track: any) {
+    if(track) {
+      this.newTrackElement = track;
+      this.botonAgregado = true;
+    }
   }
 
  

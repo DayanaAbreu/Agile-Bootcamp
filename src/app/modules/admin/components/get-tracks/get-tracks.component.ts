@@ -1,6 +1,6 @@
 import { KeyValuePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrackModel } from '@core/models/tracks.model';
 import { AdminService } from '@modules/admin/services/admin.service';
@@ -8,37 +8,49 @@ import { MultimediaService } from '@shared/service/multimedia.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, map, mergeMap, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UpdateTrackComponent } from '../update-track/update-track.component';
+import { AdminPageComponent } from '@modules/admin/pages/admin-page/admin-page.component';
 
 @Component({
   selector: 'app-get-tracks',
   templateUrl: './get-tracks.component.html',
   styleUrls: ['./get-tracks.component.css'],
 })
-export class GetTracksComponent implements OnInit, OnChanges{
+export class GetTracksComponent implements OnInit, OnChanges {
+  updateStatus = 0;
   private readonly URL = environment.api
-  
+
   @Input() tracks: Array<TrackModel> = [] //Es lo mismo que tracks: TrackModel[] = []
+  @Input() newTrack: any
+  @Input() agregado = false
   optionSort: { property: string | null, order: string } = { property: null, order: 'asc'}
 
+  data = ''
   numeroTrack: number | null = null
 
-  constructor(private multimediaService: MultimediaService, 
+  @ViewChild(AdminPageComponent) 'child' = new AdminPageComponent
+
+  constructor(
+    private multimediaService: MultimediaService, 
     private adminService: AdminService,
     private cookie: CookieService,
     private router: Router) {}
 
-    ngOnChanges(changes: SimpleChanges): void {
- 
-    }
 
     ngOnInit():void {
-      this.loadDataAll()
       
+      this.loadDataAll()      
       }
+
+      ngOnChanges(changes: SimpleChanges): void {
+        this.addANewTrack()
+      }
+
 
     async loadDataAll(): Promise<any> {
       this.tracks = await this.multimediaService.getAllTracks$().toPromise()
     }
+
 
     changeSort(property: string): void {
       const { order } = this.optionSort
@@ -74,7 +86,24 @@ export class GetTracksComponent implements OnInit, OnChanges{
     resetIndice(indice: number | null): void {
       this.numeroTrack= indice
     }
-    
+
+    sendUpdateTrack(event: any): void {
+      console.log(event.name)
+      this.adminService.updateTrack(event.id, event.name)
+      .subscribe(responseOk => {
+        console.log('Track actualizado correctamente', responseOk)
+        this.loadDataAll();
+      })
+    }    
+
+    addANewTrack(): void {
+        console.log('el objeto es', this.newTrack)
+        this.adminService.sendTrack(this.newTrack.name, this.newTrack.album, this.newTrack.cover, this.newTrack.artist)
+          .subscribe(responseOk => {
+            console.log('Track agregado correctamente', responseOk)
+            this.loadDataAll();
+          })
+    }
 
   ngOnDestroy(): void {
 

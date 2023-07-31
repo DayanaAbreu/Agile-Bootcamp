@@ -3,8 +3,8 @@
         <!--ng if (variable que inventaré y tendrá valor al dar click en botón) = true, mostrar formulario-->
         <button (click)="pressNewTrack()" class="social-btn">Nuevo Track</button>
         <div *ngIf="botonTrack === true ">
-            <app-new-track></app-new-track>
+            <app-new-track (newTrackEvent)="getNew($event)"></app-new-track>
         </div>
     </div>
-    <app-get-tracks ></app-get-tracks>
+    <app-get-tracks [agregado]="botonAgregado" [newTrack]="newTrackElement"></app-get-tracks>
 </div>

@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NewTrackComponent implements OnInit {
 
-  @Output() public newTrack: EventEmitter<TrackModel> = new EventEmitter()
+  @Output() public newTrackEvent: EventEmitter<any> = new EventEmitter()
 
   formAdmin: UntypedFormGroup = new UntypedFormGroup({});
 
@@ -40,11 +40,9 @@ export class NewTrackComponent implements OnInit {
 
   sendNewTrack(): void {
     const { name, album, cover, artist } = this.formAdmin.value
+    this.newTrackEvent.emit({name, album, cover, artist})
     this.adminService.sendTrack(name, album, cover, artist)
-      .subscribe(responseOk => {
-        console.log('Track agregado correctamente', responseOk)
-        this.formAdmin.reset()
-      })
+    this.formAdmin.reset()
   }
 
 }

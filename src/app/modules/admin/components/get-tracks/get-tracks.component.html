@@ -13,7 +13,7 @@
                 <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
                 <div class="cover-info">
                     <div *ngIf="numeroTrack !== indice" class="name-track">{{track.name}}</div>
-                    <app-update-track (trackNumberEvent)="resetIndice($event)" *ngIf="numeroTrack === indice"></app-update-track>
+                    <app-update-track (statusEvent)="sendUpdateTrack($event)" (trackNumberEvent)="resetIndice($event)" *ngIf="numeroTrack === indice"></app-update-track>
                 </div>
             </div>
         </li>

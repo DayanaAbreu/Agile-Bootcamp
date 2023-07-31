@@ -12,10 +12,10 @@ import { TrackModel } from '@core/models/tracks.model';
 export class AdminService {
 
   private readonly URL = environment.api
-  
+
 
   constructor(private http: HttpClient, private cookie: CookieService) {
-   }
+  }
 
    getAllTracks(): Observable<any> {
     return this.http.get(`${this.URL}/tracks`)
